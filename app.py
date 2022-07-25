@@ -52,7 +52,7 @@ class NLPNaive:
             print("stemming ERROR : ",e)
         
         else:
-            # print("Cleaning was sucessful")
+            
             return corpus
 
 
@@ -78,7 +78,7 @@ class NLPNaive:
             print("Lemmatizing ERROR : ",e)
     
         else:
-            # print("Cleaning was sucessful")
+            
             return corpus
 
 
@@ -92,7 +92,7 @@ class NLPNaive:
             print("count_vectorizing ERROR : ",e)
         
         else:
-            # print("Bag of Words created successfully")
+            
             return X
 
 
@@ -107,7 +107,7 @@ class NLPNaive:
             print("tf_idf ERROR : ",e)
         
         else:
-            # print("Bag of Words created successfully")
+            
             return X
 
 
@@ -120,7 +120,7 @@ class NLPNaive:
             print("y_encoding ERROR : ", e)
 
         else:
-            # print("y encoded sucessfully")
+            
             return y
     
 
@@ -134,7 +134,7 @@ class NLPNaive:
             print("split_data ERROR : ",e)
 
         else:
-            # print("Successful Splitting")
+            
             return X_train, X_test, y_train, y_test
 
 
@@ -150,7 +150,7 @@ class NLPNaive:
             print("naive_model ERROR : ", e)
             
         else:
-            # print("Naive Bayes Model built successfully")
+            
             return y_pred
 
 
@@ -169,7 +169,6 @@ class NLPNaive:
             print("cm_accuracy ERROR : ", e)
 
         else:
-            # print("cm_accuracy plotted successfully")
             return accuracy, img_cm
 
 
@@ -220,15 +219,6 @@ class NLPNaive:
 # Create space betwwen two context
 def space():
     st.markdown("<br>", unsafe_allow_html=True)
-#Background Image
-page_bg_img = '''
-<style>
-body {
-background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
-background-size: cover;
-}
-</style>
-'''
 
 ##st.markdown("<style>body {background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");background-size: cover;</style>", unsafe_allow_html=True)
 
@@ -236,7 +226,7 @@ background-size: cover;
 st.markdown("<h1 style='text-align: center; color: #3f3f44'>NLP - Uber Users Reviews</h1>", unsafe_allow_html=True)
 space()
 # Sub-Heading
-st.markdown("<strong><p style='color: #424874'>1) This project uses Naive Bayes Algorithm</p></strong>", unsafe_allow_html=True)
+#st.markdown("<strong><p style='color: #424874'>1) This project uses Naive Bayes Algorithm</p></strong>", unsafe_allow_html=True)
 st.markdown("<strong><p style='color: #424874'>2) You can choose different cleaning process (Stemming, Lemmatizing)</p></strong>", unsafe_allow_html=True)
 st.markdown("<strong><p style='color: #424874'>3) Different type of  Metrics formation (Count Vectorizing, TF-IDF)</p></strong>", unsafe_allow_html=True)
 st.markdown("<strong><p style='color: #424874'>4) Plotting Sentimental Analysis, Confusion Metrics and Word Cloud</p></strong>", unsafe_allow_html=True)
