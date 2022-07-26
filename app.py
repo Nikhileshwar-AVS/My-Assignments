@@ -227,9 +227,9 @@ st.markdown("<h1 style='text-align: center; color: #3f3f44'>NLP - Uber Users Rev
 space()
 # Sub-Heading
 #st.markdown("<strong><p style='color: #424874'>1) This project uses Naive Bayes Algorithm</p></strong>", unsafe_allow_html=True)
-st.markdown("<strong><p style='color: #424874'>2) You can choose different cleaning process (Stemming, Lemmatizing)</p></strong>", unsafe_allow_html=True)
-st.markdown("<strong><p style='color: #424874'>3) Different type of  Metrics formation (Count Vectorizing, TF-IDF)</p></strong>", unsafe_allow_html=True)
-st.markdown("<strong><p style='color: #424874'>4) Plotting Sentimental Analysis, Confusion Metrics and Word Cloud</p></strong>", unsafe_allow_html=True)
+st.markdown("<strong><p style='color: #424874'> You can choose different cleaning process (Stemming, Lemmatizing)</p></strong>", unsafe_allow_html=True)
+st.markdown("<strong><p style='color: #424874'> Different type of  Metrics formation (Count Vectorizing, TF-IDF)</p></strong>", unsafe_allow_html=True)
+st.markdown("<strong><p style='color: #424874'> Plotting Sentimental Analysis, Confusion Metrics and Word Cloud</p></strong>", unsafe_allow_html=True)
 space()
 
 
