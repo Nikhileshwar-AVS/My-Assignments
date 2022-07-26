@@ -25,7 +25,7 @@ from PIL import Image
 from textblob import TextBlob
 
 
-class NLPNaive:
+class NLP:
     def __init__(self, data):
         self.data = data
 
@@ -272,14 +272,14 @@ def boW():
         print("boW ERROR : ", e)
 
 # Converting Target categorical variable into Numerical Variable
-def y_label():
+def ylabel():
     try:
         target_variable = ["Yes - If target column does not have values like 0's and 1's", "No"]
         y_option = st.selectbox("Do you want to One Hot Encode Target Variable?", target_variable)
         return y_option
 
     except Exception as e:
-        print("y_label ERROR : ", e)
+        print("ylabel ERROR : ", e)
 
 
 # Main function
@@ -307,8 +307,8 @@ def main():
         # Droping NaN values
         data = data.dropna()
 
-        # Initialising class "NLPNaive"
-        nlp_model = NLPNaive(data)
+        # Initialising class "NLP"
+        nlp_model = NLP(data)
         
         # Displaying final DataFrame
         st.markdown("<h4 style='color: #438a5e'>Final Dataset</h4>", unsafe_allow_html=True)
@@ -326,7 +326,7 @@ def main():
         bag_of_words = boW()
         space()
         space()
-        y_option = y_label()
+        y_option = ylabel()
         space()
         space()
 
@@ -346,7 +346,7 @@ def main():
                 print("metrix Error : ", e)
 
 
-        def target_series(y_option, target):
+        def targetseries(y_option, target):
             try:
                 if y_option == "Yes":
                     y = nlp_model.y_encoding(target)
@@ -357,10 +357,10 @@ def main():
                     return y
             
             except Exception as e:
-                print("target_series ERROR : ", e)
+                print("targetseries ERROR : ", e)
 
         # Plotting functions
-        def plot_wordcloud(corpus, y_test, y_pred):
+        def plotwordcloud(corpus, y_test, y_pred):
             st.success("Word Cloud")
             wordcloud = nlp_model.word_cloud(corpus)
             st.image(wordcloud)
@@ -405,8 +405,10 @@ def main():
             st.success("Sentiments")
 
             sns.countplot(x=data["Subjectivity"],data=data)
-            sns.countplot(x=data["Polarity"],data=data)
+            
             st.pyplot(use_container_width=True)
+            
+            #.countplot(x=data["Analysis"],data=data)
 
 
             
@@ -418,11 +420,11 @@ def main():
             if preprocessor == "Stemming":
                 corpus = nlp_model.stemming(text)
                 X = metrix(corpus, bag_of_words, max_features, ngram_range)
-                y = target_series(y_option, target)
+                y = targetseries(y_option, target)
                 X_train, X_test, y_train, y_test = nlp_model.split_data(X, y)
                 y_pred = nlp_model.naive_model(X_train, X_test, y_train, y_test)
                 sentimental(text)
-                plot_wordcloud(corpus, y_test, y_pred)
+                plotwordcloud(corpus, y_test, y_pred)
                 
 
 
@@ -431,15 +433,15 @@ def main():
             elif preprocessor == "Lemmatizing":
                 corpus = nlp_model.lemmatizing(text)
                 X = metrix(corpus, bag_of_words, max_features, ngram_range)
-                y = target_series(y_option, target)
+                y = targetseries(y_option, target)
                 X_train, X_test, y_train, y_test = nlp_model.split_data(X, y)
                 y_pred = nlp_model.naive_model(X_train, X_test, y_train, y_test)
                 sentimental(text)
-                plot_wordcloud(corpus, y_test, y_pred)
+                plotwordcloud(corpus, y_test, y_pred)
                 
 
 
-    st.markdown("<h4 style='text-align: center; color: #3f3f44'>@2022 Streamlit Application</h4>", unsafe_allow_html=True)
+    #st.markdown("<h4 style='text-align: center; color: #3f3f44'>@2022 Streamlit Application</h4>", unsafe_allow_html=True)
 
         
 
